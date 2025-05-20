@@ -1,0 +1,98 @@
+/*
+ * Μην αλλάξετε τη δομή των μεθόδων – Συμπληρώστε μόνο τα // TODO σημεία.
+ * Ξεκινήστε από τους VIP: είναι προτεραιότητα να μπουν μαζί στο ίδιο αεροπλάνο.
+ * Οι standard επιβάτες μπορούν να διανεμηθούν ευέλικτα. Σκεφτείτε πώς θα ελέγχετε το size() κάθε λίστας.
+ * Οι αποσκευές πρέπει να μοιραστούν – ποτέ όλες σε ένα αεροσκάφος.
+ * Αν κάποιο από τα δύο αεροπλάνα έχει κάτω από 10 επιβάτες, θεωρείται άκυρη πτήση.
+ * Με την createRange() προετοιμάζονται τα ζητούμενα σενάρια (είναι ήδη έτοιμα)
+ * παρατηρήστε πως για δημιουργία 20 standard επιβατών καλείται createRange("std_", 20)
+ * 
+ */
+
+import java.util.*;
+
+public class AirplaneAssignmentStudent {
+
+    public static void main(String[] args) {
+        // Δεδομένα για τα 4 σενάρια
+        String[][] vipScenarios = {
+            {"vip_0", "vip_1", "vip_2", "vip_3", "vip_4", "vip_5", "vip_6", "vip_7", "vip_8", "vip_9", "vip_10", "vip_11"},
+            {"vip_0", "vip_1", "vip_2", "vip_3", "vip_4"},
+            {"vip_0", "vip_1", "vip_2", "vip_3", "vip_4"},
+            {"vip_0", "vip_1", "vip_2", "vip_3"}
+        };
+
+        String[][] stdScenarios = {
+            createRange("std_", 26),
+            createRange("std_", 36),
+            createRange("std_", 38),
+            createRange("std_", 21)
+        };
+
+        String[][] bagScenarios = {
+            createRange("bag_", 6),
+            createRange("bag_", 8),
+            createRange("bag_", 18),
+            createRange("bag_", 5)
+        };
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println("\n=== Σενάριο " + (i + 1) + " ===");
+            // TODO: Καλέστε μια μέθοδο που να διαχειρίζεται ένα σενάριο
+            // handleScenario(vips, stds, bags);
+        }
+    }
+
+    /**
+     * Η μέθοδος αυτή διαχειρίζεται ένα σενάριο επιβίβασης επιβατών σε δύο αεροσκάφη.
+     */
+    public static void handleScenario(String[] vipArr, String[] stdArr, String[] bagArr) {
+        // TODO: Αρχικοποιήστε δύο λίστες που θα παριστάνουν τα δύο αεροσκάφη
+        List<String> plane1 = new ArrayList<>();
+        List<String> plane2 = new ArrayList<>();
+
+        // Χωρητικότητα κάθε αεροσκάφους
+        final int MAX_SEATS = 30;
+
+        // TODO: Προσθέστε τους VIP επιβάτες σε ένα από τα δύο αεροσκάφη, κατά προτίμηση όλα μαζί
+        // Συμβουλή: Αν χωρούν όλοι στο πρώτο αεροπλάνο, βάλτε τους εκεί. Αν όχι, μοιράστε σε δύο.
+
+        // TODO: Συνεχίστε με τους standard επιβάτες
+        // Συμβουλή: Μοιράστε τους εναλλάξ, ξεκινώντας από το αεροπλάνο που έχει περισσότερο χώρο.
+
+        // TODO: Μοιράστε τις αποσκευές ώστε να ΜΗΝ μπουν όλες στο ίδιο αεροσκάφος
+        // Συμβουλή: χρησιμοποιήστε toggle (boolean) για εναλλαγή.
+
+        // TODO: Αν κάποιο αεροσκάφος έχει < 10 επιβάτες συνολικά, να ακυρώνεται (να αδειάζει).
+
+        // TODO: Εκτυπώστε τη σύνθεση κάθε αεροσκάφους
+        printPlane("Αεροπλάνο 1", plane1);
+        printPlane("Αεροπλάνο 2", plane2);
+    }
+
+    /**
+     * Εκτυπώνει τους επιβάτες που μπήκαν στο αεροπλάνο.
+     */
+    public static void printPlane(String title, List<String> plane) {
+        if (plane.isEmpty()) {
+            System.out.println(title + " – Η πτήση ακυρώνεται (λιγότεροι από 10 επιβάτες)");
+            return;
+        }
+
+        System.out.println(title + " – Συνολικά επιβάτες: " + plane.size());
+        for (String passenger : plane) {
+            System.out.println("- " + passenger);
+        }
+    }
+
+    /**
+     * Μέθοδος για δημιουργία ονομάτων επιβατών π.χ. std_0 έως std_24
+     */
+    public static String[] createRange(String prefix, int count) {
+        String[] array = new String[count];
+        for (int i = 0; i < count; i++) {
+            array[i] = prefix + i;
+        }
+        return array;
+    }
+}

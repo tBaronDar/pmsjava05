@@ -8,7 +8,7 @@ public class GreeklishConverter {
 
     public static void main(String[] args) {
         // TODO: Ορίστε μια μεταβλητή τύπου String που περιέχει ελληνικό κείμενο
-        String greekText = ""; // π.χ. "Καλημέρα σας! Πώς είστε σήμερα;"
+        String greekText = "Καλημέρα σας! Πώς είστε σήμερα;"; // π.χ. "Καλημέρα σας! Πώς είστε σήμερα;"
 
         // TODO: Δημιουργήστε ένα StringBuilder για τη μετατροπή σε greeklish
         StringBuilder greeklish = new StringBuilder();
@@ -41,14 +41,35 @@ public class GreeklishConverter {
         // αν ch είναι 'α' ή 'ά', επιστρέψτε "a"
         // αν ch είναι 'β', επιστρέψτε "b"
         // αν δεν αντιστοιχεί, επιστρέψτε τον ίδιο χαρακτήρα ως String
-        switch (Character.toLowerCase(ch)) {
+        return switch (Character.toLowerCase(ch)) {
             // TODO: Προσθέστε περιπτώσεις χαρακτήρων π.χ.:
-            // case 'α': case 'ά': return "a";
-            // case 'ε': case 'έ': return "e";
-            // ...
+            case 'α', 'ά', 'Α', 'Ά' -> "a";
+            case 'β', 'Β' -> "v";
+            case 'γ', 'Γ' -> "g";
+            case 'δ', 'Δ' -> "d";
+            case 'ε', 'έ', 'Ε', 'Έ' -> "e";
+            case 'ζ', 'Ζ' -> "z";
+            case 'η', 'ή', 'Η', 'Ή' -> "i";
+            case 'θ', 'Θ' -> "th";
+            case 'ι', 'ί', 'ϊ', 'ΐ', 'Ι', 'Ί', 'Ϊ' -> "i";
+            case 'κ', 'Κ' -> "k";
+            case 'λ', 'Λ' -> "l";
+            case 'μ', 'Μ' -> "m";
+            case 'ν', 'Ν' -> "n";
+            case 'ξ', 'Ξ' -> "x";
+            case 'ο', 'ό', 'Ο', 'Ό' -> "o";
+            case 'π', 'Π' -> "p";
+            case 'ρ', 'Ρ' -> "r";
+            case 'σ', 'ς', 'Σ' -> "s";
+            case 'τ', 'Τ' -> "t";
+            case 'υ', 'ύ', 'ϋ', 'ΰ', 'Υ', 'Ύ', 'Ϋ' -> "y";
+            case 'φ', 'Φ' -> "f";
+            case 'χ', 'Χ' -> "ch";
+            case 'ψ', 'Ψ' -> "ps";
+            case 'ω', 'ώ', 'Ω', 'Ώ' -> "o";
 
-            default:
-                return String.valueOf(ch); // επιστρέφει χαρακτήρες όπως κενά, στίξη, κλπ.
-        }
+
+            default -> String.valueOf(ch); // επιστρέφει χαρακτήρες όπως κενά, στίξη, κλπ.
+        };
     }
 }
